@@ -1,8 +1,8 @@
 * Spring 2022 235 Assignments
 
-* Last name:
+* Last name: Hsui
 
-* First name:
+* First name: Steven
 
 * GitHub username:
 
