@@ -35,6 +35,6 @@ std::string List::toString()
       walker = walker->getNext();
    }
 
-   s += "nulltpr";
+   s += "nullptr";
    return s;
 }
