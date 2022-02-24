@@ -1,2 +1,2 @@
-- Compile: `make main`
-- Run: `./main`
+- Compile: ~make main~
+- Run: ~./main~
