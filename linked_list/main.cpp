@@ -16,5 +16,11 @@ int main()
 
    std::cout << "Position of c: " << list->locate("c") << std::endl;
 
+   std::cout << "Removing c..." << std::endl;
+
+   list->remove("c");
+
+   std::cout << list->toString() << std::endl;
+
    return 0;
 }

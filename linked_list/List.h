@@ -12,4 +12,5 @@ public:
    void insert(std::string data);
    std::string toString();
    int locate(std::string data);
+   void remove(std::string data);
 };
