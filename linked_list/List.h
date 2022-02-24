@@ -11,4 +11,5 @@ public:
    List();
    void insert(std::string data);
    std::string toString();
+   int locate(std::string data);
 };
