@@ -13,4 +13,5 @@ public:
    std::string toString();
    int locate(std::string data);
    void remove(std::string data);
+   ~List();
 };

@@ -80,3 +80,15 @@ void List::remove(std::string data)
       walker->setNext(walker->getNext()->getNext());
    }
 }
+
+List::~List()
+{
+   Node *walker = head;
+
+   while (walker != nullptr)
+   {
+      Node *current = walker;
+      walker = walker->getNext();
+      delete current;
+   }
+}

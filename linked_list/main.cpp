@@ -22,5 +22,7 @@ int main()
 
    std::cout << list->toString() << std::endl;
 
+   delete list;
+
    return 0;
 }
