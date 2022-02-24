@@ -11,10 +11,9 @@ void List::insert(std::string data)
 {
    Node *new_node = new Node(data);
 
-   if (head == nullptr)
-   {
-      head = new_node;
-   }
+   new_node->setNext(head);
+   head = new_node;
+}
    else
    {
       head->setNext(new_node);
