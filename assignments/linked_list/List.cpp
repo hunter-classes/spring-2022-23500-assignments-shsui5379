@@ -5,6 +5,7 @@
 List::List()
 {
    head = nullptr;
+   length = 0;
 }
 
 void List::insert(std::string data)
@@ -13,6 +14,34 @@ void List::insert(std::string data)
 
    new_node->setNext(head);
    head = new_node;
+
+   length++;
+}
+
+void List::insert(int index, std::string data)
+{
+   if (index == 0)
+   {
+      return insert(data);
+   }
+
+   if (index < 0 || index > length)
+   {
+      throw std::out_of_range("Out of range");
+   }
+
+   Node *new_node = new Node(data);
+   Node *walker = head;
+
+   for (int i = 0; i < index - 1; i++)
+   {
+      walker = walker->getNext();
+   }
+
+   new_node->setNext(walker->getNext());
+   walker->setNext(new_node);
+
+   length++;
 }
 
 std::string List::toString()
@@ -77,8 +106,40 @@ void List::remove(std::string data)
          walker = walker->getNext();
       }
 
-      walker->setNext(walker->getNext()->getNext());
+      Node *target = walker->getNext();
+
+      walker->setNext(target->getNext());
+
+      delete target;
+
+      length--;
    }
+   else
+   {
+      throw std::out_of_range("Out of range");
+   }
+}
+
+int List::getLength()
+{
+   return length;
+}
+
+std::string List::get(int index)
+{
+   if (index < 0 || index > length - 1)
+   {
+      throw std::out_of_range("Out of range");
+   }
+
+   Node *walker = head;
+
+   for (int i = 0; i < index; i++)
+   {
+      walker = walker->getNext();
+   }
+
+   return walker->getData();
 }
 
 List::~List()
