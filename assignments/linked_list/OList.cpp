@@ -43,3 +43,14 @@ std::string OList::toString()
 {
    return "head --> " + List::toString();
 }
+
+/**
+ * Determines if a value is in this linked list
+ *
+ * @param value  The value to search for
+ * @returns  true if `value` is found in this linked  list
+ * */
+bool OList::contains(std::string value)
+{
+   return locate(value) > -1;
+}

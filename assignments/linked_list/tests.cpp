@@ -34,3 +34,17 @@ TEST_CASE("toString")
 
    CHECK(olist->toString() == "head --> A --> C --> D --> nullptr");
 }
+
+TEST_CASE("contains")
+{
+   OList *olist = new OList();
+
+   olist->insert("A");
+   olist->insert("D");
+   olist->insert("C");
+
+   CHECK(olist->contains("B") == false);
+   CHECK(olist->contains("A") == true);
+   CHECK(olist->contains("C") == true);
+   CHECK(olist->contains("D") == true);
+}
