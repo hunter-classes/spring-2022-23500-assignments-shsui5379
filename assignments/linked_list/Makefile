@@ -5,7 +5,7 @@ tests: tests.o Node.o List.o OList.o
 	g++ -o tests tests.o Node.o List.o OList.o
 
 
-main.o: main.cpp Node.h List.h. OList.h
+main.o: main.cpp Node.h List.h OList.h
 
 tests.o: tests.cpp ../../commons/doctest.h OList.h
 
