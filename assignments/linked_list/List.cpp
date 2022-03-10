@@ -106,7 +106,16 @@ void List::remove(std::string data)
          walker = walker->getNext();
       }
 
-      Node *target = walker->getNext();
+      Node *target;
+      if (position > 0)
+      {
+         target = walker->getNext();
+      }
+      else
+      {
+         target = head;
+         head = target->getNext();
+      }
 
       walker->setNext(target->getNext());
 

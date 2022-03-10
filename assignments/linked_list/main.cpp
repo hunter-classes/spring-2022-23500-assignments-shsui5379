@@ -36,6 +36,38 @@ int main()
 
    std::cout << "Length of list: " << list->getLength() << std::endl;
 
+   std::cout << "Inserting a \"x\" at index 0:" << std::endl;
+
+   list->insert(0, "x");
+
+   std::cout << list->toString() << std::endl;
+
+   std::cout << "Length of list: " << list->getLength() << std::endl;
+
+   std::cout << "Inserting a \"*\" at index 6:" << std::endl;
+
+   list->insert(6, "*");
+
+   std::cout << list->toString() << std::endl;
+
+   std::cout << "Length of list: " << list->getLength() << std::endl;
+
+   std::cout << "Removing x..." << std::endl;
+
+   list->remove("x");
+
+   std::cout << list->toString() << std::endl;
+
+   std::cout << "Length of list: " << list->getLength() << std::endl;
+
+   std::cout << "Removing *..." << std::endl;
+
+   list->remove("*");
+
+   std::cout << list->toString() << std::endl;
+
+   std::cout << "Length of list: " << list->getLength() << std::endl;
+
    delete list;
 
    return 0;
