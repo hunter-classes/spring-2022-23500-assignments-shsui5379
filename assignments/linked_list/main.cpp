@@ -1,9 +1,12 @@
 #include <iostream>
 #include "Node.h"
 #include "List.h"
+#include "OList.h"
 
 int main()
 {
+   std::cout << "List:\n\n";
+
    List *list = new List();
 
    list->insert("a");
@@ -69,6 +72,41 @@ int main()
    std::cout << "Length of list: " << list->getLength() << std::endl;
 
    delete list;
+
+   std::cout << "----------------------------\n\nOList\n\n";
+
+   OList *olist = new OList();
+
+   olist->insert("A");
+   olist->insert("D");
+   olist->insert("C");
+   olist->insert("E");
+   olist->insert("E");
+   olist->insert("B");
+
+   std::cout << olist->toString() << std::endl;
+
+   std::cout << "Inserting a C..." << std::endl;
+
+   olist->insert("C");
+
+   std::cout << olist->toString() << std::endl;
+
+   std::cout << "olist contains G: " << olist->contains("G") << std::endl;
+
+   std::cout << "Element at index 1: " << olist->get(1) << std::endl;
+
+   std::cout << "Removing element at index 3..." << std::endl;
+
+   olist->remove(3);
+
+   std::cout << olist->toString() << std::endl;
+
+   std::cout << "Reversing list..." << std::endl;
+
+   olist->reverse();
+
+   std::cout << olist->toString() << std::endl;
 
    return 0;
 }
