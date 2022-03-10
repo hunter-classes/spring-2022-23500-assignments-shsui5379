@@ -93,3 +93,29 @@ void OList::remove(int loc)
       throw std::out_of_range("Out of range");
    }
 }
+
+/**
+ * Reverses this linkled list
+ * */
+void OList::reverse()
+{
+   if (head == nullptr)
+      return;
+
+   Node *trailer = nullptr;
+   Node *walker = head;
+   Node *seeker = head->getNext();
+
+   while (seeker != nullptr)
+   {
+      walker->setNext(trailer);
+
+      trailer = walker;
+      walker = seeker;
+      seeker = walker->getNext();
+
+      head = walker;
+   }
+
+   walker->setNext(trailer);
+}

@@ -66,3 +66,22 @@ TEST_CASE("remove")
    olist->remove(0);
    CHECK(olist->toString() == "head --> nullptr");
 }
+
+TEST_CASE("reverse")
+{
+   OList *olist = new OList();
+
+   olist->reverse();
+   CHECK(olist->toString() == "head --> nullptr");
+
+   olist->insert("A");
+   olist->reverse();
+   CHECK(olist->toString() == "head --> A --> nullptr");
+
+   olist->insert("D");
+   olist->insert("C");
+   olist->insert("E");
+   olist->insert("B");
+   olist->reverse();
+   CHECK(olist->toString() == "head --> E --> D --> C --> B --> A --> nullptr");
+}
