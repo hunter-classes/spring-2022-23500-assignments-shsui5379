@@ -4,7 +4,32 @@
 
 OList::OList() : List::List() {}
 
-OList::~OList()
+OList::~OList() {}
+
+/**
+ * Inserts a new Node to this list so that it's still in increasing order
+ *
+ * @param value  Value for the new Node to insert
+ * */
+void OList::insert(std::string value)
 {
-   List::~List();
+   int index = 0;
+
+   while (index < getLength() && get(index) < value)
+   {
+      index++;
+   }
+
+   List::insert(index, value);
+}
+
+/**
+ * Get a value from a location
+ *
+ * @param loc  The locatoin
+ * @returns  The value at `loc`
+ * */
+std::string OList::get(int loc)
+{
+   return List::get(loc);
 }
