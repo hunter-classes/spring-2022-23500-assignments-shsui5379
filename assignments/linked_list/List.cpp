@@ -47,14 +47,14 @@ void List::insert(int index, std::string data)
 std::string List::toString()
 {
    if (head == nullptr)
-      return "";
+      return "nullptr";
 
    Node *walker = head;
    std::string s = "";
 
    while (walker != nullptr)
    {
-      s += walker->getData() + "-->";
+      s += walker->getData() + " --> ";
       walker = walker->getNext();
    }
 

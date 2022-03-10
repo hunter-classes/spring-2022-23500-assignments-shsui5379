@@ -33,3 +33,13 @@ std::string OList::get(int loc)
 {
    return List::get(loc);
 }
+
+/**
+ * Get the string representation of this linked list
+ *
+ * @returns  String representation of this linked list
+ * */
+std::string OList::toString()
+{
+   return "head --> " + List::toString();
+}

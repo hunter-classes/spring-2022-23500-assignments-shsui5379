@@ -21,3 +21,16 @@ TEST_CASE("get and insert")
    CHECK(olist->get(4) == "E");
    CHECK(olist->get(5) == "E");
 }
+
+TEST_CASE("toString")
+{
+   OList *olist = new OList();
+
+   CHECK(olist->toString() == "head --> nullptr");
+
+   olist->insert("A");
+   olist->insert("D");
+   olist->insert("C");
+
+   CHECK(olist->toString() == "head --> A --> C --> D --> nullptr");
+}
