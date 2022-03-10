@@ -48,3 +48,21 @@ TEST_CASE("contains")
    CHECK(olist->contains("C") == true);
    CHECK(olist->contains("D") == true);
 }
+
+TEST_CASE("remove")
+{
+   OList *olist = new OList();
+
+   olist->insert("A");
+   olist->insert("D");
+   olist->insert("C");
+
+   olist->remove(1);
+   CHECK(olist->toString() == "head --> A --> D --> nullptr");
+
+   olist->remove(1);
+   CHECK(olist->toString() == "head --> A --> nullptr");
+
+   olist->remove(0);
+   CHECK(olist->toString() == "head --> nullptr");
+}

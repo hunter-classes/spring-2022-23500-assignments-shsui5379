@@ -1,10 +1,11 @@
 #pragma once
 
+#include <iostream>
 #include "Node.h"
 
 class List
 {
-private:
+protected:
    Node *head;
    int length;
 

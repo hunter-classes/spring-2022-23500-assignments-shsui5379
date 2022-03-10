@@ -54,3 +54,42 @@ bool OList::contains(std::string value)
 {
    return locate(value) > -1;
 }
+
+/**
+ * Removes the Node at the given position
+ *
+ * @param loc  The location of the Node to remove
+ * */
+void OList::remove(int loc)
+{
+   if (loc > -1)
+   {
+      Node *walker = head;
+
+      for (int i = 0; i < loc - 1; i++)
+      {
+         walker = walker->getNext();
+      }
+
+      Node *target;
+      if (loc > 0)
+      {
+         target = walker->getNext();
+      }
+      else
+      {
+         target = head;
+         head = target->getNext();
+      }
+
+      walker->setNext(target->getNext());
+
+      delete target;
+
+      length--;
+   }
+   else
+   {
+      throw std::out_of_range("Out of range");
+   }
+}
