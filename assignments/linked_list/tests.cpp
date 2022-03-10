@@ -20,6 +20,9 @@ TEST_CASE("get and insert")
    CHECK(olist->get(3) == "D");
    CHECK(olist->get(4) == "E");
    CHECK(olist->get(5) == "E");
+
+   CHECK_THROWS_AS(olist->get(-1), std::out_of_range);
+   CHECK_THROWS_AS(olist->get(6), std::out_of_range);
 }
 
 TEST_CASE("toString")
@@ -56,6 +59,9 @@ TEST_CASE("remove")
    olist->insert("A");
    olist->insert("D");
    olist->insert("C");
+
+   CHECK_THROWS_AS(olist->remove(-1), std::out_of_range);
+   CHECK_THROWS_AS(olist->remove(4), std::out_of_range);
 
    olist->remove(1);
    CHECK(olist->toString() == "head --> A --> D --> nullptr");

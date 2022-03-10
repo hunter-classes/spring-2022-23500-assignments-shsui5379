@@ -62,7 +62,7 @@ bool OList::contains(std::string value)
  * */
 void OList::remove(int loc)
 {
-   if (loc > -1)
+   if (loc > -1 && loc < getLength())
    {
       Node *walker = head;
 
