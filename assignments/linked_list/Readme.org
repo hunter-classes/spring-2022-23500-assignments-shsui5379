@@ -1,2 +1,5 @@
-- Compile: ~make main~
-- Run: ~./main~
+- Compile main: ~make main~
+- Run main: ~./main~
+
+- Compile tests: ~make tests~
+- Run tests: ~./tests~
