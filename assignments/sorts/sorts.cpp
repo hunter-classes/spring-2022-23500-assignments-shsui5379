@@ -5,11 +5,6 @@
 #include <cstdlib>
 #include <sys/time.h>
 #include <math.h>
-#include <cassert>
-
-std::vector<int> msort(std::vector<int> v)
-{
-}
 
 void print_vector(std::vector<int> a)
 {
@@ -102,9 +97,32 @@ std::vector<int> merge(std::vector<int> left,
    return merged;
 }
 
+std::vector<int> msort(std::vector<int> v)
+{
+   if (v.size() == 1)
+      return v;
+
+   std::vector<int> half1, half2;
+
+   for (int i = 0; i < v.size() / 2; i++)
+   {
+      half1.push_back(v[i]);
+   }
+
+   for (int i = v.size() / 2; i < v.size(); i++)
+   {
+      half2.push_back(v[i]);
+   }
+
+   std::vector<int> sorted_half1 = msort(half1);
+   std::vector<int> sorted_half2 = msort(half2);
+
+   return merge(sorted_half1, sorted_half2);
+}
+
 int main()
 {
-   /* int size = 102000;
+   int size = 25;
    int max_val = 1000;
 
    srand(time(nullptr));
@@ -112,19 +130,12 @@ int main()
    int i;
    for (i = 0; i < size; i++)
    {
-     a[i] = rand() % max_val;
+      a[i] = rand() % max_val;
    }
    print_vector(a);
    std::cout << "\n";
-   a = ssort(a);
-   print_vector(a); */
-
-   std::vector<int> v1 = {3, 5, 8, 12, 13, 17};
-   std::vector<int> v2 = {2, 6, 7, 14, 19, 26};
-
-   std::vector<int> s = {2, 3, 5, 6, 7, 8, 12, 13, 14, 17, 19, 26};
-
-   assert(merge(v1, v2) == s);
+   a = msort(a);
+   print_vector(a);
 
    return 0;
 }
