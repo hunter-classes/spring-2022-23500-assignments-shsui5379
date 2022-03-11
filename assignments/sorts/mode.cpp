@@ -6,6 +6,7 @@
 int count(std::vector<int> v, int value);
 int largest(std::vector<int> v);
 int mode(std::vector<int> v);
+int mode2(std::vector<int> v);
 
 /**
  * Counts the number of times a value appears in a vector
@@ -75,23 +76,47 @@ int mode(std::vector<int> v)
    return mode;
 }
 
+int mode2(std::vector<int> v)
+{
+   std::vector<int> frequencies(largest(v) + 1, 0);
+
+   for (int num : v)
+   {
+      frequencies[num]++;
+   }
+
+   int largestFreq = frequencies[0];
+   int indexOfLargest = 0;
+
+   for (int i = 1; i < frequencies.size(); i++)
+   {
+      if (frequencies[i] > largestFreq)
+      {
+         largestFreq = frequencies[i];
+         indexOfLargest = i;
+      }
+   }
+
+   return indexOfLargest;
+}
+
 int main()
 {
    srand(time(NULL));
    std::vector<int> v;
 
-   for (int i = 0; i < 10; i++)
+   for (int i = 0; i < 100000; i++)
    {
       int random = rand() % 11;
       v.push_back(random);
-      std::cout << random << ", ";
+      std::cout << random << "\n";
    }
 
    std::cout << std::endl;
 
    std::cout << "Count of " << v[0] << ": " << count(v, v[0]) << std::endl;
    std::cout << "Largest: " << largest(v) << std::endl;
-   std::cout << "Mode: " << mode(v) << std::endl;
+   std::cout << "Mode: " << mode2(v) << std::endl;
 
    return 0;
 }
