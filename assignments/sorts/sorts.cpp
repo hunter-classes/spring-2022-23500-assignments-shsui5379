@@ -99,7 +99,7 @@ std::vector<int> merge(std::vector<int> left,
 
 std::vector<int> msort(std::vector<int> v)
 {
-   if (v.size() == 1)
+   if (v.size() <= 1)
       return v;
 
    std::vector<int> half1, half2;
