@@ -21,61 +21,28 @@ bool isPathToFreedom(MazeCell *start, const std::string &moves)
         {
         case 'N':
             current = current->north;
-
-            if (current == nullptr)
-                return false;
-
-            if (current->whatsHere == Item::POTION)
-                hasPotion = true;
-            else if (current->whatsHere == Item::SPELLBOOK)
-                hasSpellbook = true;
-            else if (current->whatsHere == Item::WAND)
-                hasWand = true;
             break;
 
         case 'E':
             current = current->east;
-
-            if (current == nullptr)
-                return false;
-
-            if (current->whatsHere == Item::POTION)
-                hasPotion = true;
-            else if (current->whatsHere == Item::SPELLBOOK)
-                hasSpellbook = true;
-            else if (current->whatsHere == Item::WAND)
-                hasWand = true;
-
             break;
         case 'S':
             current = current->south;
-
-            if (current == nullptr)
-                return false;
-
-            if (current->whatsHere == Item::POTION)
-                hasPotion = true;
-            else if (current->whatsHere == Item::SPELLBOOK)
-                hasSpellbook = true;
-            else if (current->whatsHere == Item::WAND)
-                hasWand = true;
-
             break;
         case 'W':
             current = current->west;
-
-            if (current == nullptr)
-                return false;
-
-            if (current->whatsHere == Item::POTION)
-                hasPotion = true;
-            else if (current->whatsHere == Item::SPELLBOOK)
-                hasSpellbook = true;
-            else if (current->whatsHere == Item::WAND)
-                hasWand = true;
-
             break;
         }
+
+        if (current == nullptr)
+            return false;
+
+        if (current->whatsHere == Item::POTION)
+            hasPotion = true;
+        else if (current->whatsHere == Item::SPELLBOOK)
+            hasSpellbook = true;
+        else if (current->whatsHere == Item::WAND)
+            hasWand = true;
     }
 
     return hasPotion && hasSpellbook && hasWand;
