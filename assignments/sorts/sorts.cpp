@@ -210,7 +210,7 @@ void print_help(char *command_name)
    std::cout << " [-h|-p|-m N|-s N|-a algorithm]\n\n";
    std::cout << " -m MAX_ELEMENT_SIZE\n";
    std::cout << " -s DATA_SET_SIZE\n";
-   std::cout << " -a[s|m|q|2]: s - selection, m - merge, q - the first quicksort, 2 - the second quicksort\n";
+   std::cout << " -a[s|m|q|Q]: s - selection, m - merge, q - the first quicksort, Q - the second (faster) quicksort\n";
 }
 
 extern char *optarg;
@@ -279,7 +279,7 @@ int main(int argc, char *argv[])
    {
       a = qsort(a);
    }
-   else if (algorithm == '2')
+   else if (algorithm == 'Q')
    {
       qsort2(a, 0, a.size() - 1);
    }
