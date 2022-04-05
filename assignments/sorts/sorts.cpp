@@ -171,13 +171,46 @@ std::vector<int> qsort(std::vector<int> list)
    return list;
 }
 
+void qsort2(std::vector<int> &list, int low, int high)
+{
+   // base case
+   if (high - low == 1)
+   {
+      return;
+   }
+
+   // choosing pivot
+   int pivot;
+
+   int first = list[low];
+   int middle = list[(high + low) / 2];
+   int last = list[high];
+
+   if (first > middle && first < last)
+   {
+      pivot = first;
+   }
+   else if (middle > first && middle < last)
+   {
+      pivot = middle;
+   }
+   else
+   {
+      pivot = last;
+   }
+
+   // swap
+
+   // further sorting
+}
+
 void print_help(char *command_name)
 {
    std::cout << "Usage: " << command_name;
    std::cout << " [-h|-p|-m N|-s N|-a algorithm]\n\n";
    std::cout << " -m MAX_ELEMENT_SIZE\n";
    std::cout << " -s DATA_SET_SIZE\n";
-   std::cout << " -a[s|m]: s - selection, m - merge\n";
+   std::cout << " -a[s|m|q|2]: s - selection, m - merge, q - the first quicksort, 2 - the second quicksort\n";
 }
 
 extern char *optarg;
@@ -240,12 +273,15 @@ int main(int argc, char *argv[])
    }
    else if (algorithm == 'm')
    {
-
       a = msort(a);
    }
    else if (algorithm == 'q')
    {
       a = qsort(a);
+   }
+   else if (algorithm == '2')
+   {
+      qsort2(a, 0, a.size() - 1);
    }
 
    gettimeofday(&tp, NULL);
