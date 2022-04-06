@@ -171,6 +171,19 @@ std::vector<int> qsort(std::vector<int> list)
    return list;
 }
 
+bool isSorted(std::vector<int> list, int low, int high)
+{
+   for (int i = low; i < high; i++)
+   {
+      if (list[low] > list[high])
+      {
+         return false;
+      }
+   }
+
+   return true;
+}
+
 void qsort2(std::vector<int> &list, int low, int high)
 {
    // base case
@@ -219,10 +232,10 @@ void qsort2(std::vector<int> &list, int low, int high)
       }
    }
 
-   std::cout << "pivot: " << pivot << ", divider: " << divider << ", low: " << low << ", high: " << high << std::endl;
-   print_vector(list);
+   // std::cout << "pivot: " << pivot << ", divider: " << divider << ", low: " << low << ", high: " << high << std::endl;
+   // print_vector(list);
 
-   if (divider == low || divider == high + 1)
+   if ((divider == low || divider == high + 1) && isSorted(list, low, high))
    {
       return;
    }
