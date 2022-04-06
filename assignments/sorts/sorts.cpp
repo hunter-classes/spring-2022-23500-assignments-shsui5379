@@ -219,8 +219,13 @@ void qsort2(std::vector<int> &list, int low, int high)
       }
    }
 
-   // print_vector(list);
-   // std::cout << "pivot: " << pivot << ", divider: " << divider << ", low: " << low << ", high: " << high << std::endl;
+   //std::cout << "pivot: " << pivot << ", divider: " << divider << ", low: " << low << ", high: " << high << std::endl;
+   //print_vector(list);
+
+   if (divider == low || divider == high + 1)
+   {
+      return;
+   }
 
    // further sorting
    qsort2(list, low, divider - 1);
