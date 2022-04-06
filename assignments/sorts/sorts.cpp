@@ -174,7 +174,7 @@ std::vector<int> qsort(std::vector<int> list)
 void qsort2(std::vector<int> &list, int low, int high)
 {
    // base case
-   if (high - low == 1)
+   if (high - low <= 1 && list[low] <= list[high])
    {
       return;
    }
@@ -200,8 +200,31 @@ void qsort2(std::vector<int> &list, int low, int high)
    }
 
    // swap
+   int divider = high + 1;
+   int currentIndex = low;
+
+   while (currentIndex < divider)
+   {
+      if (list[currentIndex] >= pivot)
+      {
+         divider--;
+
+         int temp = list[currentIndex];
+         list[currentIndex] = list[divider];
+         list[divider] = temp;
+      }
+      else
+      {
+         currentIndex++;
+      }
+   }
+
+   // print_vector(list);
+   // std::cout << "pivot: " << pivot << ", divider: " << divider << ", low: " << low << ", high: " << high << std::endl;
 
    // further sorting
+   qsort2(list, low, divider - 1);
+   qsort2(list, divider, high);
 }
 
 void print_help(char *command_name)
