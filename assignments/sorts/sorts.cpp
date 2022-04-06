@@ -186,11 +186,11 @@ void qsort2(std::vector<int> &list, int low, int high)
    int middle = list[(high + low) / 2];
    int last = list[high];
 
-   if (first > middle && first < last)
+   if (first >= middle && first <= last || first >= last && first <= middle)
    {
       pivot = first;
    }
-   else if (middle > first && middle < last)
+   else if (middle >= first && middle <= last || middle >= last && middle <= first)
    {
       pivot = middle;
    }
@@ -219,8 +219,8 @@ void qsort2(std::vector<int> &list, int low, int high)
       }
    }
 
-   //std::cout << "pivot: " << pivot << ", divider: " << divider << ", low: " << low << ", high: " << high << std::endl;
-   //print_vector(list);
+   std::cout << "pivot: " << pivot << ", divider: " << divider << ", low: " << low << ", high: " << high << std::endl;
+   print_vector(list);
 
    if (divider == low || divider == high + 1)
    {
