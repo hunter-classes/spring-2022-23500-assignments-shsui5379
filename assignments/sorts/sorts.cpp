@@ -174,7 +174,7 @@ std::vector<int> qsort(std::vector<int> list)
 void qsort2(std::vector<int> &list, int low, int high)
 {
    // base case
-   if (high - low <= 1 && list[low] <= list[high])
+   if (high <= low + 1 && (low > high || list[low] <= list[high]))
    {
       return;
    }
