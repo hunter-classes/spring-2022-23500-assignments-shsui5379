@@ -173,7 +173,7 @@ std::vector<int> qsort(std::vector<int> list)
 
 bool isSorted(std::vector<int> list, int low, int high)
 {
-   for (int i = low; i < high - 1; i++)
+   for (int i = low; i < high; i++)
    {
       if (list[i] > list[i + 1])
       {
@@ -232,8 +232,8 @@ void qsort2(std::vector<int> &list, int low, int high)
       }
    }
 
-   std::cout << "pivot: " << pivot << ", divider: " << divider << ", low: " << low << ", high: " << high << std::endl;
-   print_vector(list);
+   // std::cout << "pivot: " << pivot << ", divider: " << divider << ", low: " << low << ", high: " << high << std::endl;
+   // print_vector(list);
 
    if ((divider == low || divider == high + 1) && isSorted(list, low, high))
    {
