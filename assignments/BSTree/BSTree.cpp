@@ -10,14 +10,22 @@ BSTree::BSTree()
 
 std::string BSTree::get_debug_string()
 {
-   if (root == nullptr)
+   return get_debug_string_helper(root);
+}
+
+std::string BSTree::get_debug_string_helper(Node *subtreeRoot)
+{
+   if (subtreeRoot == nullptr)
    {
       return "";
    }
-   else
+
+   if (subtreeRoot->getLeft() == nullptr && subtreeRoot->getRight() == nullptr)
    {
-      return std::to_string(root->getData()) + "\n" + std::to_string(root->getLeft()->getData()) + "\n" + std::to_string(root->getRight()->getData()) + "\n" + std::to_string(root->getLeft()->getLeft()->getData());
+      return std::to_string(subtreeRoot->getData());
    }
+
+   return std::to_string(subtreeRoot->getData()) + "\n" + get_debug_string_helper(subtreeRoot->getLeft()) + "\n" + get_debug_string_helper(subtreeRoot->getRight());
 }
 
 void BSTree::setup()
