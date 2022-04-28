@@ -43,6 +43,40 @@ void Queue::enqueue(int n)
 }
 
 /**
+ * Dequeue the first item from this Queue
+ *
+ * @returns  The first item
+ * */
+int Queue::dequeue()
+{
+   if (is_empty())
+   {
+      throw QUEUE_ERR_EMPTY;
+   }
+
+   int data = front();
+
+   head++;
+
+   return data;
+}
+
+/**
+ * Gets the item from the front
+ *
+ * @returns  The first item
+ * */
+int Queue::front()
+{
+   if (is_empty())
+   {
+      throw QUEUE_ERR_EMPTY;
+   }
+
+   return arr[head % size];
+}
+
+/**
  * Determine if this Queue is full
  *
  * @returns  True if full
