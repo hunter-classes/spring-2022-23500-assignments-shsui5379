@@ -8,6 +8,7 @@
 TEST_CASE("Stack")
 {
    Stack *stack = new Stack(3);
+   CHECK_THROWS(new Stack(0), STACK_ERR_INVALID_SIZE);
 
    CHECK(stack->is_empty() == true);
 
@@ -40,6 +41,7 @@ TEST_CASE("Stack")
 TEST_CASE("Queue")
 {
    Queue *queue = new Queue(3);
+   CHECK_THROWS(new Queue(0), QUEUE_ERR_INVALID_SIZE);
 
    CHECK(queue->is_empty() == true);
    CHECK(queue->is_full() == false);
