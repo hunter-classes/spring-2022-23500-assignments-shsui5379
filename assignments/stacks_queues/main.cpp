@@ -3,6 +3,8 @@
 
 int main()
 {
+   std::cout << "STACK" << std::endl;
+
    Stack *stack = new Stack(3);
 
    try
@@ -11,21 +13,21 @@ int main()
    }
    catch (int e)
    {
-      std::cout << "Invalid size" << std::endl;
+      std::cout << "0 is an invalid size" << std::endl;
    }
 
-   std::cout << stack->is_empty() << std::endl;
+   std::cout << "is empty?: " << stack->is_empty() << std::endl;
 
    stack->push("1");
+   std::cout << "pushed " << stack->top() << std::endl;
 
-   std::cout << stack->is_empty() << std::endl;
-   std::cout << stack->top() << std::endl;
+   std::cout << "is empty? " << stack->is_empty() << std::endl;
 
    stack->push("2");
-   std::cout << stack->top() << std::endl;
+   std::cout << "pushed " << stack->top() << std::endl;
 
    stack->push("3");
-   std::cout << stack->top() << std::endl;
+   std::cout << "pushed " << stack->top() << std::endl;
 
    try
    {
@@ -36,13 +38,13 @@ int main()
       std::cout << "Stack is full" << std::endl;
    }
 
-   std::cout << stack->pop() << std::endl;
-   std::cout << stack->top() << std::endl;
+   std::cout << "popped " << stack->pop() << std::endl;
+   std::cout << stack->top() << " remains" << std::endl;
 
-   std::cout << stack->pop() << std::endl;
-   std::cout << stack->top() << std::endl;
+   std::cout << "popped " << stack->pop() << std::endl;
+   std::cout << stack->top() << " remains" << std::endl;
 
-   std::cout << stack->pop() << std::endl;
+   std::cout << "popped " << stack->pop() << std::endl;
    try
    {
       std::cout << stack->top() << std::endl;
