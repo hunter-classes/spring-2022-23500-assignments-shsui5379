@@ -52,7 +52,7 @@ std::string Stack::pop()
       throw STACK_ERR_EMPTY;
    }
 
-   std::string data = list->get(topIndex);
+   std::string data = list->get(0);
    list->remove(0);
    topIndex--;
 
