@@ -3,6 +3,7 @@
 #include "../../commons/doctest.h"
 
 #include "Stack.h"
+#include "Queue.h"
 
 TEST_CASE("Stack")
 {
@@ -31,6 +32,43 @@ TEST_CASE("Stack")
 
    CHECK(stack->pop() == "1");
    CHECK_THROWS(stack->top(), STACK_ERR_EMPTY);
+   CHECK_THROWS(stack->pop(), STACK_ERR_EMPTY);
 
    CHECK(stack->is_empty() == true);
+}
+
+TEST_CASE("Queue")
+{
+   Queue *queue = new Queue(3);
+
+   CHECK(queue->is_empty() == true);
+   CHECK(queue->is_full() == false);
+
+   queue->enqueue(1);
+
+   CHECK(queue->is_empty() == false);
+   CHECK(queue->is_full() == false);
+   CHECK(queue->front() == 1);
+
+   queue->enqueue(2);
+   queue->enqueue(3);
+
+   CHECK_THROWS(queue->enqueue(4), QUEUE_ERR_FULL);
+   CHECK(queue->is_empty() == false);
+   CHECK(queue->is_full() == true);
+
+   CHECK(queue->dequeue() == 1);
+   CHECK(queue->front() == 2);
+
+   CHECK(queue->dequeue() == 2);
+   CHECK(queue->front() == 3);
+
+   CHECK(queue->dequeue() == 3);
+   CHECK_THROWS(queue->front(), QUEUE_ERR_EMPTY);
+   CHECK_THROWS(queue->dequeue(), QUEUE_ERR_EMPTY);
+
+   CHECK(queue->is_empty() == true);
+   CHECK(queue->is_full() == false);
+
+   CHECK(queue->is_empty() == true);
 }
