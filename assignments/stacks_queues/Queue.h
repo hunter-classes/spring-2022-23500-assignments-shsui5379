@@ -11,6 +11,8 @@ private:
    int tail;
    int *arr;
    int size;
+   bool empty;
+   bool full;
 
 public:
    Queue(int s);

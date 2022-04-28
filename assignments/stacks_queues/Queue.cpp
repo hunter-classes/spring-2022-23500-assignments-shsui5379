@@ -16,6 +16,8 @@ Queue::Queue(int s)
    tail = 0;
    arr = new int[s];
    size = s;
+   empty = true;
+   full = false;
 }
 
 /**
@@ -38,8 +40,15 @@ void Queue::enqueue(int n)
       throw QUEUE_ERR_FULL;
    }
 
-   tail++;
+   empty = false;
+
    arr[tail % size] = n;
+   tail++;
+
+   if (head % size == tail % size)
+   {
+      full = true;
+   }
 }
 
 /**
@@ -54,9 +63,16 @@ int Queue::dequeue()
       throw QUEUE_ERR_EMPTY;
    }
 
+   full = false;
+
    int data = front();
 
    head++;
+
+   if (head % size == tail % size)
+   {
+      empty = true;
+   }
 
    return data;
 }
@@ -83,7 +99,7 @@ int Queue::front()
  * */
 bool Queue::is_full()
 {
-   return (tail + 1) % size == head % size;
+   return full;
 }
 
 /**
@@ -93,5 +109,5 @@ bool Queue::is_full()
  * */
 bool Queue::is_empty()
 {
-   return head % size == tail % size;
+   return empty;
 }
