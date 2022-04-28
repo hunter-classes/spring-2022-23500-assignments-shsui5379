@@ -53,7 +53,7 @@ std::string Stack::pop()
    }
 
    std::string data = list->get(topIndex);
-   list->remove(topIndex);
+   list->remove(0);
    topIndex--;
 
    return data;
@@ -66,7 +66,7 @@ std::string Stack::pop()
  * */
 std::string Stack::top()
 {
-   return list->get(topIndex);
+   return list->get(0);
 }
 
 /**
