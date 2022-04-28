@@ -77,6 +77,4 @@ TEST_CASE("Queue")
 
    CHECK(queue->is_empty() == true);
    CHECK(queue->is_full() == false);
-
-   CHECK(queue->is_empty() == true);
 }
