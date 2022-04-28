@@ -88,26 +88,19 @@ int List::locate(std::string data)
    return -1;
 }
 
-/**
- * Remove the first instance of data
- *
- * @param data  The data to remove
- * */
-void List::remove(std::string data)
+void List::remove(int loc)
 {
-   int position = locate(data);
-
-   if (position > -1)
+   if (loc > -1 && loc < getLength())
    {
       Node *walker = head;
 
-      for (int i = 0; i < position - 1; i++)
+      for (int i = 0; i < loc - 1; i++)
       {
          walker = walker->getNext();
       }
 
       Node *target;
-      if (position > 0)
+      if (loc > 0)
       {
          target = walker->getNext();
       }
