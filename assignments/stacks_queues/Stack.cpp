@@ -1,6 +1,6 @@
 #include "Stack.h"
 /**
- * Initializes a Stack that can fit s ints
+ * Initializes a Stack that can fit s strings
  *
  * @param s  Size of the Stack to construct
  * */
@@ -22,4 +22,39 @@ Stack::Stack(int s)
 Stack::~Stack()
 {
    delete list;
+}
+
+/**
+ * Pushes string onto this Stack
+ *
+ * @param s  The int to push
+ * */
+void Stack::push(std::string s)
+{
+   if (topIndex + 1 == size)
+   {
+      throw STACK_ERR_FULL;
+   }
+
+   topIndex++;
+   list->insert(s);
+}
+
+/**
+ * Remove and return the top item
+ *
+ * @returns  The top item
+ * */
+std::string Stack::pop()
+{
+   if (is_empty())
+   {
+      throw STACK_ERR_EMPTY;
+   }
+
+   std::string data = list->get(topIndex);
+   list->remove(topIndex);
+   topIndex--;
+
+   return data;
 }
