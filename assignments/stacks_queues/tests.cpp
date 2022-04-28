@@ -68,10 +68,15 @@ TEST_CASE("Queue")
    CHECK(queue->dequeue() == 2);
    CHECK(queue->front() == 3);
 
+   queue->enqueue(5);
+
    CHECK(queue->dequeue() == 3);
    CHECK(queue->front() == 4);
 
    CHECK(queue->dequeue() == 4);
+   CHECK(queue->front() == 5);
+
+   CHECK(queue->dequeue() == 5);
    CHECK_THROWS(queue->front(), QUEUE_ERR_EMPTY);
    CHECK_THROWS(queue->dequeue(), QUEUE_ERR_EMPTY);
 
