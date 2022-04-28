@@ -66,6 +66,11 @@ std::string Stack::pop()
  * */
 std::string Stack::top()
 {
+   if (is_empty())
+   {
+      throw STACK_ERR_EMPTY;
+   }
+
    return list->get(0);
 }
 
