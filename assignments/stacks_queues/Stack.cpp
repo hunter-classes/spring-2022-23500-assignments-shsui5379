@@ -12,7 +12,7 @@ Stack::Stack(int s)
    }
 
    list = new List();
-   topIndex = 0;
+   topIndex = -1;
    size = s;
 }
 
@@ -57,4 +57,24 @@ std::string Stack::pop()
    topIndex--;
 
    return data;
+}
+
+/**
+ * Get the top item of this Stack
+ *
+ * @returns  The top item
+ * */
+std::string Stack::top()
+{
+   return list->get(topIndex);
+}
+
+/**
+ * Returns whether this Stack is empty
+ *
+ * @returns  True if empty
+ * */
+bool Stack::is_empty()
+{
+   return topIndex == -1;
 }

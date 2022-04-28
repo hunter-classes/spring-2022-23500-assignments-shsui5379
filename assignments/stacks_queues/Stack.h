@@ -3,6 +3,8 @@
 #include "List.h"
 
 #define STACK_ERR_INVALID_SIZE 1
+#define STACK_ERR_FULL 2
+#define STACK_ERR_EMPTY 4
 
 class Stack
 {
@@ -14,8 +16,8 @@ private:
 public:
    Stack(int s);
    ~Stack();
-   void push(int n);
-   int pop();
-   int top();
+   void push(std::string s);
+   std::string pop();
+   std::string top();
    bool is_empty();
 };
