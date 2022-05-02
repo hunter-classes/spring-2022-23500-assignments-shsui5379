@@ -12,5 +12,6 @@ public:
    void insert(int data);
    void setup();
    int search(int value);
-   void insert(int value);
+   int rsearch(int value);
+   int rsearch(int value, Node *root);
 };

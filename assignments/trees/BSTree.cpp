@@ -137,3 +137,33 @@ void BSTree::insert(int value)
       }
    }
 }
+
+int BSTree::rsearch(int value)
+{
+   return rsearch(value, root);
+}
+
+int BSTree::rsearch(int value, Node *root)
+{
+   if (root == nullptr)
+   {
+      throw 1;
+   }
+
+   if (root->getData() == value)
+   {
+      return value;
+   }
+
+   if (root->getLeft() == nullptr && root->getRight() == nullptr)
+   {
+      throw 1;
+   }
+
+   if (value > root->getData())
+   {
+      return rsearch(value, root->getRight());
+   }
+
+   return rsearch(value, root->getLeft());
+}
