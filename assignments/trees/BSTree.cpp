@@ -175,7 +175,11 @@ void BSTree::rinsert(int value)
 
 void BSTree::rinsert(int value, Node *root)
 {
-   if (value > root->getData())
+   if (root == nullptr)
+   {
+      root = new Node(value);
+   }
+   else if (value > root->getData())
    {
       if (root->getRight() == nullptr)
       {

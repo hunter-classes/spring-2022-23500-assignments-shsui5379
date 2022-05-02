@@ -4,6 +4,8 @@ class BSTree
 {
 private:
    Node *root;
+   int rsearch(int value, Node *root);
+   void rinsert(int value, Node *root);
 
 public:
    BSTree();
@@ -13,7 +15,5 @@ public:
    void setup();
    int search(int value);
    int rsearch(int value);
-   int rsearch(int value, Node *root);
    void rinsert(int value);
-   void rinsert(int value, Node *root);
 };
