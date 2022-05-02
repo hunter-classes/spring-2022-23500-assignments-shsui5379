@@ -24,5 +24,8 @@ int main()
       std::cout << 0 << " not found" << std::endl;
    }
 
+   tree->rinsert(17);
+   std::cout << tree->rsearch(17) << std::endl;
+
    return 0;
 }
