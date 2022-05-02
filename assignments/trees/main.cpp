@@ -26,6 +26,7 @@ int main()
 
    tree->rinsert(17);
    std::cout << tree->rsearch(17) << std::endl;
+   std::cout << tree->get_debug_string() << std::endl;
 
    return 0;
 }

@@ -5,7 +5,7 @@
 #include "Node.h"
 #include "BSTree.h"
 
-TEST_CASE("rsearch and rinsert")
+TEST_CASE("rsearch")
 {
    BSTree *tree = new BSTree();
    tree->setup();
@@ -19,7 +19,14 @@ TEST_CASE("rsearch and rinsert")
    CHECK(tree->rsearch(30) == 30);
 
    CHECK_THROWS(tree->rsearch(0), 1);
+}
+
+TEST_CASE("rinsert")
+{
+   BSTree *tree = new BSTree();
+   tree->setup();
 
    tree->rinsert(17);
    CHECK(tree->rsearch(17) == 17);
+   CHECK(tree->get_debug_string() == "10, 5, 3, 8, 20, 15, , 17, 30");
 }
