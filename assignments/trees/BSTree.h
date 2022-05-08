@@ -8,6 +8,7 @@ private:
    Node *root;
    int rsearch(int value, Node *root);
    void rinsert(int value, Node *root);
+   void remove(int value, Node *root);
 
 public:
    BSTree();
@@ -18,4 +19,5 @@ public:
    int search(int value);
    int rsearch(int value);
    void rinsert(int value);
+   void remove(int value);
 };
