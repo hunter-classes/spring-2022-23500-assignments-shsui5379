@@ -79,7 +79,7 @@ int BSTree::search(int value)
    // an int, we can't return an int to represent
    // not found so we'll throw an exception
 
-   throw 1; // we should define our exceptions.
+   throw NODE_NOT_FOUND; // we should define our exceptions.
 }
 
 // we will always insert new nodes as leaves
@@ -147,7 +147,7 @@ int BSTree::rsearch(int value, Node *root)
 {
    if (root == nullptr)
    {
-      throw 1;
+      throw NODE_NOT_FOUND;
    }
 
    if (root->getData() == value)
@@ -157,7 +157,7 @@ int BSTree::rsearch(int value, Node *root)
 
    if (root->getLeft() == nullptr && root->getRight() == nullptr)
    {
-      throw 1;
+      throw NODE_NOT_FOUND;
    }
 
    if (value > root->getData())

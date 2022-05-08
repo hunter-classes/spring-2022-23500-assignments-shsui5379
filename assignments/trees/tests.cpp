@@ -18,7 +18,7 @@ TEST_CASE("rsearch")
    CHECK(tree->rsearch(20) == 20);
    CHECK(tree->rsearch(30) == 30);
 
-   CHECK_THROWS(tree->rsearch(0), 1);
+   CHECK_THROWS(tree->rsearch(0), NODE_NOT_FOUND);
 }
 
 TEST_CASE("rinsert")

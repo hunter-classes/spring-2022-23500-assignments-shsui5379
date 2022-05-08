@@ -1,5 +1,7 @@
 #pragma once
 
+#define NODE_NOT_FOUND 1
+
 class BSTree
 {
 private:
