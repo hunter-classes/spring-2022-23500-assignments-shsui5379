@@ -210,134 +210,115 @@ void BSTree::rinsert(int value, Node *root)
  * */
 void BSTree::remove(int value)
 {
-   remove(value, root);
+   remove(value, nullptr);
 }
 
-void BSTree::remove(int value, Node *root)
+void BSTree::remove(int value, Node *trailer)
 {
-   // empty subtree
-   if (root == nullptr)
+   // root
+   if (trailer == nullptr)
+   {
+      // root is value to delete
+      if (root->getData() == value)
+      {
+         // no child
+         if (root->getLeft() == nullptr && root->getRight() == nullptr)
+         {
+            delete root;
+            root = nullptr;
+         }
+         // has only a left child
+         else if (root->getLeft() != nullptr && root->getRight() == nullptr)
+         {
+            Node *newRoot = root->getLeft();
+            delete root;
+            root = newRoot;
+         }
+         // has only a right child
+         else if (root->getRight() != nullptr && root->getLeft() == nullptr)
+         {
+            Node *newRoot = root->getRight();
+            delete root;
+            root = newRoot;
+         }
+         // has 2 children
+         else if (root->getLeft() != nullptr && root->getRight() != nullptr)
+         {
+            // get smallest
+            Node *walker = root->getRight();
+
+            while (walker->getLeft() != nullptr)
+            {
+               walker = walker->getLeft();
+            }
+
+            // copy
+            root->setData(walker->getData());
+
+            // delete dupe
+            remove(walker->getData(), root);
+         }
+      }
+      else
+      {
+         remove(value, root);
+      }
+   }
+
+   // child is value to delete
+   else if (trailer->getLeft() != nullptr && trailer->getLeft()->getData() == value || trailer->getRight() != nullptr && trailer->getRight()->getData() == value)
+   {
+      Node *toDelete;
+
+      if (trailer->getLeft()->getData() == value)
+      {
+         toDelete = trailer->getLeft();
+      }
+      else
+      {
+         toDelete = trailer->getRight();
+      }
+
+      // no child or one left child
+      if ((toDelete->getLeft() != nullptr && toDelete->getRight() == nullptr) || (toDelete->getLeft() == nullptr && toDelete->getRight() == nullptr))
+      {
+         trailer->setLeft(toDelete->getLeft());
+         delete toDelete;
+      }
+      // one right child
+      else if (toDelete->getRight() != nullptr && toDelete->getLeft() == nullptr)
+      {
+         trailer->setRight(toDelete->getRight());
+         delete toDelete;
+      }
+      // two children
+      else if (toDelete->getLeft() != nullptr && toDelete->getRight() != nullptr)
+      {
+         // get smallest
+         Node *walker = toDelete->getRight();
+
+         while (walker->getLeft() != nullptr)
+         {
+            walker = walker->getLeft();
+         }
+
+         // copy
+         toDelete->setData(walker->getData());
+
+         // delete dupe
+         remove(walker->getData(), toDelete);
+      }
+   }
+   else if (value > trailer->getData() && trailer->getRight() != nullptr)
+   {
+      remove(value, trailer->getRight());
+   }
+   else if (value < trailer->getData() && trailer->getLeft() != nullptr)
+   {
+      remove(value, trailer->getLeft());
+   }
+   else if (trailer->getData() != value && trailer->getLeft() == nullptr && trailer->getRight() == nullptr)
    {
       throw NODE_NOT_FOUND;
-   }
-
-   // root is value to delete
-   if (root->getData() == value)
-   {
-      // no child
-      if (root->getLeft() == nullptr && root->getRight() == nullptr)
-      {
-         delete root;
-         this->root = nullptr;
-      }
-      // has only a left child
-      else if (root->getLeft() != nullptr && root->getRight() == nullptr)
-      {
-         Node *newRoot = root->getLeft();
-         delete root;
-         this->root = newRoot;
-      }
-      // has only a right child
-      else if (root->getRight() != nullptr && root->getLeft() == nullptr)
-      {
-         Node *newRoot = root->getRight();
-         delete root;
-         this->root = newRoot;
-      }
-      // has 2 children
-      else if (root->getLeft() != nullptr && root->getRight() != nullptr)
-      {
-         // get smallest
-         Node *walker = root->getRight();
-
-         while (walker->getLeft() != nullptr)
-         {
-            walker = walker->getLeft();
-         }
-
-         // copy
-         root->setData(walker->getData());
-
-         // delete dupe
-         remove(value, root->getRight());
-      }
-   }
-   // left child is value to delete
-   else if (root->getLeft() != nullptr && root->getLeft()->getData() == value)
-   {
-      Node *toDelete = root->getLeft();
-
-      // no child or one left child
-      if ((toDelete->getLeft() != nullptr && toDelete->getRight() == nullptr) || (toDelete->getLeft() == nullptr && toDelete->getRight() == nullptr))
-      {
-         root->setLeft(toDelete->getLeft());
-         delete toDelete;
-      }
-      // one right child
-      else if (toDelete->getRight() != nullptr && toDelete->getLeft() == nullptr)
-      {
-         root->setRight(toDelete->getRight());
-         delete toDelete;
-      }
-      // two children
-      else if (toDelete->getLeft() != nullptr && toDelete->getRight() != nullptr)
-      {
-         // get smallest
-         Node *walker = toDelete->getRight();
-
-         while (walker->getLeft() != nullptr)
-         {
-            walker = walker->getLeft();
-         }
-
-         // copy
-         toDelete->setData(walker->getData());
-
-         // delete dupe
-         remove(value, toDelete->getRight());
-      }
-   }
-   // right child is value to delete
-   else if (root->getRight() != nullptr && root->getRight()->getData() == value)
-   {
-      Node *toDelete = root->getRight();
-
-      // no child or one left child
-      if ((toDelete->getLeft() != nullptr && toDelete->getRight() == nullptr) || (toDelete->getLeft() == nullptr && toDelete->getRight() == nullptr))
-      {
-         root->setLeft(toDelete->getLeft());
-         delete toDelete;
-      }
-      // one right child
-      else if (toDelete->getRight() != nullptr && toDelete->getLeft() == nullptr)
-      {
-         root->setRight(toDelete->getRight());
-         delete toDelete;
-      }
-      // two children
-      else if (toDelete->getLeft() != nullptr && toDelete->getRight() != nullptr)
-      {
-         // get smallest
-         Node *walker = toDelete->getRight();
-
-         while (walker->getLeft() != nullptr)
-         {
-            walker = walker->getLeft();
-         }
-
-         // copy
-         toDelete->setData(walker->getData());
-
-         // delete dupe
-         remove(value, toDelete->getRight());
-      }
-   }
-   else if (value > root->getData())
-   {
-      remove(value, root->getRight());
-   }
-   else
-   {
-      remove(value, root->getLeft());
    }
 }
