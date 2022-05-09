@@ -266,23 +266,48 @@ void BSTree::remove(int value, Node *trailer)
    }
 
    // child is value to delete
-   else if (trailer->getLeft() != nullptr && trailer->getLeft()->getData() == value || trailer->getRight() != nullptr && trailer->getRight()->getData() == value)
+   else if (trailer->getLeft() != nullptr && trailer->getLeft()->getData() == value)
    {
-      Node *toDelete;
-
-      if (trailer->getLeft()->getData() == value)
-      {
-         toDelete = trailer->getLeft();
-      }
-      else
-      {
-         toDelete = trailer->getRight();
-      }
+      Node *toDelete = trailer->getLeft();
 
       // no child or one left child
       if ((toDelete->getLeft() != nullptr && toDelete->getRight() == nullptr) || (toDelete->getLeft() == nullptr && toDelete->getRight() == nullptr))
       {
          trailer->setLeft(toDelete->getLeft());
+         delete toDelete;
+      }
+      // one right child
+      else if (toDelete->getRight() != nullptr && toDelete->getLeft() == nullptr)
+      {
+         trailer->setLeft(toDelete->getRight());
+         delete toDelete;
+      }
+      // two children
+      else if (toDelete->getLeft() != nullptr && toDelete->getRight() != nullptr)
+      {
+         // get smallest
+         Node *walker = toDelete->getRight();
+
+         while (walker->getLeft() != nullptr)
+         {
+            walker = walker->getLeft();
+         }
+
+         // copy
+         toDelete->setData(walker->getData());
+
+         // delete dupe
+         remove(walker->getData(), toDelete);
+      }
+   }
+   else if (trailer->getRight() != nullptr && trailer->getRight()->getData() == value)
+   {
+      Node *toDelete = trailer->getRight();
+
+      // no child or one left child
+      if ((toDelete->getLeft() != nullptr && toDelete->getRight() == nullptr) || (toDelete->getLeft() == nullptr && toDelete->getRight() == nullptr))
+      {
+         trailer->setRight(toDelete->getLeft());
          delete toDelete;
       }
       // one right child
@@ -309,7 +334,7 @@ void BSTree::remove(int value, Node *trailer)
          remove(walker->getData(), toDelete);
       }
    }
-   else if (value > trailer->getData() && trailer->getRight() != nullptr)
+   else if (value >= trailer->getData() && trailer->getRight() != nullptr)
    {
       remove(value, trailer->getRight());
    }
