@@ -46,33 +46,40 @@ TEST_CASE("remove")
    CHECK(tree->rsearch(10) == 10);
    tree->remove(10);
    CHECK_THROWS(tree->rsearch(10), NODE_NOT_FOUND);
+   CHECK(tree->get_debug_string() == "15, 5, 3, 8, 20, , 30");
 
    // remove node w/ one child
    CHECK(tree->rsearch(20) == 20);
    tree->remove(20);
    CHECK_THROWS(tree->rsearch(20), NODE_NOT_FOUND);
+   CHECK(tree->get_debug_string() == "15, 5, 3, 8, 30");
 
    // remove leaf
    CHECK(tree->rsearch(30) == 30);
    tree->remove(30);
    CHECK_THROWS(tree->rsearch(30), NODE_NOT_FOUND);
+   CHECK(tree->get_debug_string() == "15, 5, 3, 8, ");
 
    // remove node w/ two children
    CHECK(tree->rsearch(5) == 5);
    tree->remove(5);
    CHECK_THROWS(tree->rsearch(5), NODE_NOT_FOUND);
+   CHECK(tree->get_debug_string() == "15, 8, 3, , ");
 
    // remove root w/ one child
    CHECK(tree->rsearch(15) == 15);
    tree->remove(15);
    CHECK_THROWS(tree->rsearch(15), NODE_NOT_FOUND);
+   CHECK(tree->get_debug_string() == "8, 3, ");
 
    CHECK(tree->rsearch(8) == 8);
    tree->remove(8);
    CHECK_THROWS(tree->rsearch(8), NODE_NOT_FOUND);
+   CHECK(tree->get_debug_string() == "3");
 
    // remove root that's leaf
    CHECK(tree->rsearch(3) == 3);
    tree->remove(3);
    CHECK_THROWS(tree->rsearch(3), NODE_NOT_FOUND);
+   CHECK(tree->get_debug_string() == "");
 }
