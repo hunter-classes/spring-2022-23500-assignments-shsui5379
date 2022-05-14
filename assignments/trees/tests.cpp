@@ -83,3 +83,19 @@ TEST_CASE("remove")
    CHECK_THROWS(tree->rsearch(3), NODE_NOT_FOUND);
    CHECK(tree->get_debug_string() == "");
 }
+
+TEST_CASE("countLeaves")
+{
+   BSTree *tree = new BSTree();
+   CHECK(tree->countLeaves() == 0);
+
+   tree->setup();
+   CHECK(tree->countLeaves() == 7);
+
+   tree->rinsert(12);
+   CHECK(tree->countLeaves() == 8);
+
+   tree->remove(12);
+   tree->remove(3);
+   CHECK(tree->countLeaves() == 6);
+}
