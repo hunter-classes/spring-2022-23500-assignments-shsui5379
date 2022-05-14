@@ -34,6 +34,7 @@ int main()
    tree2->setup();
    std::cout << tree2->get_debug_string() << std::endl;
    std::cout << "Tree has " << tree2->countLeaves() << " leaves" << std::endl;
+   std::cout << "Tree's height is " << tree2->getHeight() << " nodes" << std::endl;
 
    tree2->remove(10);
    try
@@ -46,6 +47,7 @@ int main()
    }
    std::cout << tree2->get_debug_string() << std::endl;
    std::cout << "Tree has " << tree2->countLeaves() << " leaves" << std::endl;
+   std::cout << "Tree's height is " << tree2->getHeight() << " nodes" << std::endl;
 
    tree2->remove(20);
    try
@@ -58,6 +60,7 @@ int main()
    }
    std::cout << tree2->get_debug_string() << std::endl;
    std::cout << "Tree has " << tree2->countLeaves() << " leaves" << std::endl;
+   std::cout << "Tree's height is " << tree2->getHeight() << " nodes" << std::endl;
 
    tree2->remove(30);
    try
@@ -70,6 +73,7 @@ int main()
    }
    std::cout << tree2->get_debug_string() << std::endl;
    std::cout << "Tree has " << tree2->countLeaves() << " leaves" << std::endl;
+   std::cout << "Tree's height is " << tree2->getHeight() << " nodes" << std::endl;
 
    tree2->remove(5);
    try
@@ -82,6 +86,7 @@ int main()
    }
    std::cout << tree2->get_debug_string() << std::endl;
    std::cout << "Tree has " << tree2->countLeaves() << " leaves" << std::endl;
+   std::cout << "Tree's height is " << tree2->getHeight() << " nodes" << std::endl;
 
    tree2->remove(15);
    try
@@ -94,6 +99,7 @@ int main()
    }
    std::cout << tree2->get_debug_string() << std::endl;
    std::cout << "Tree has " << tree2->countLeaves() << " leaves" << std::endl;
+   std::cout << "Tree's height is " << tree2->getHeight() << " nodes" << std::endl;
 
    tree2->remove(8);
    try
@@ -106,6 +112,7 @@ int main()
    }
    std::cout << tree2->get_debug_string() << std::endl;
    std::cout << "Tree has " << tree2->countLeaves() << " leaves" << std::endl;
+   std::cout << "Tree's height is " << tree2->getHeight() << " nodes" << std::endl;
 
    tree2->remove(3);
    try
@@ -118,6 +125,7 @@ int main()
    }
    std::cout << tree2->get_debug_string() << std::endl;
    std::cout << "Tree has " << tree2->countLeaves() << " leaves" << std::endl;
+   std::cout << "Tree's height is " << tree2->getHeight() << " nodes" << std::endl;
 
    return 0;
 }
