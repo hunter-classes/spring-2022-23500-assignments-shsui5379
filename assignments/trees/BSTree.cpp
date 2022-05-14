@@ -350,7 +350,7 @@ void BSTree::remove(int value, Node *trailer)
 
 /**
  * @brief Counts the number of leaves on this Tree
- * 
+ *
  * @return int Number of leaves
  */
 int BSTree::countLeaves()
@@ -360,10 +360,22 @@ int BSTree::countLeaves()
 
 int BSTree::countLeaves(Node *root)
 {
-   if (root == nullptr)
+   if (root == nullptr || (root->getLeft() == nullptr && root->getRight() == nullptr))
    {
       return 0;
    }
 
-   return 1 + countLeaves(root->getLeft()) + countLeaves(root->getRight());
+   if (root->getLeft() != nullptr && root->getLeft()->getLeft() == nullptr && root->getLeft()->getRight() == nullptr &&
+       root->getRight() != nullptr && root->getRight()->getLeft() == nullptr && root->getRight()->getRight() == nullptr)
+   {
+      return 2;
+   }
+
+   if (root->getLeft() != nullptr && root->getLeft()->getLeft() == nullptr && root->getLeft()->getRight() == nullptr ||
+       root->getRight() != nullptr && root->getRight()->getLeft() == nullptr && root->getRight()->getRight() == nullptr)
+   {
+      return 1;
+   }
+
+   return countLeaves(root->getLeft()) + countLeaves(root->getRight());
 }
