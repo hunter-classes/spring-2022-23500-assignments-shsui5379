@@ -90,12 +90,12 @@ TEST_CASE("countLeaves")
    CHECK(tree->countLeaves() == 0);
 
    tree->setup();
-   CHECK(tree->countLeaves() == 7);
+   CHECK(tree->countLeaves() == 4);
 
    tree->rinsert(12);
-   CHECK(tree->countLeaves() == 8);
+   CHECK(tree->countLeaves() == 4);
 
    tree->remove(12);
    tree->remove(3);
-   CHECK(tree->countLeaves() == 6);
+   CHECK(tree->countLeaves() == 3);
 }
