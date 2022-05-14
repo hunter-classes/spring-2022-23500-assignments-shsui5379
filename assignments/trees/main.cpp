@@ -33,6 +33,7 @@ int main()
    BSTree *tree2 = new BSTree();
    tree2->setup();
    std::cout << tree2->get_debug_string() << std::endl;
+   std::cout << "Tree has " << tree2->countLeaves() << " leaves" << std::endl;
 
    tree2->remove(10);
    try
@@ -44,6 +45,7 @@ int main()
       std::cout << "10 got removed" << std::endl;
    }
    std::cout << tree2->get_debug_string() << std::endl;
+   std::cout << "Tree has " << tree2->countLeaves() << " leaves" << std::endl;
 
    tree2->remove(20);
    try
@@ -55,6 +57,7 @@ int main()
       std::cout << "20 got removed" << std::endl;
    }
    std::cout << tree2->get_debug_string() << std::endl;
+   std::cout << "Tree has " << tree2->countLeaves() << " leaves" << std::endl;
 
    tree2->remove(30);
    try
@@ -66,6 +69,7 @@ int main()
       std::cout << "30 got removed" << std::endl;
    }
    std::cout << tree2->get_debug_string() << std::endl;
+   std::cout << "Tree has " << tree2->countLeaves() << " leaves" << std::endl;
 
    tree2->remove(5);
    try
@@ -77,6 +81,7 @@ int main()
       std::cout << "5 got removed" << std::endl;
    }
    std::cout << tree2->get_debug_string() << std::endl;
+   std::cout << "Tree has " << tree2->countLeaves() << " leaves" << std::endl;
 
    tree2->remove(15);
    try
@@ -88,6 +93,7 @@ int main()
       std::cout << "15 got removed" << std::endl;
    }
    std::cout << tree2->get_debug_string() << std::endl;
+   std::cout << "Tree has " << tree2->countLeaves() << " leaves" << std::endl;
 
    tree2->remove(8);
    try
@@ -99,6 +105,7 @@ int main()
       std::cout << "8 got removed" << std::endl;
    }
    std::cout << tree2->get_debug_string() << std::endl;
+   std::cout << "Tree has " << tree2->countLeaves() << " leaves" << std::endl;
 
    tree2->remove(3);
    try
@@ -110,6 +117,7 @@ int main()
       std::cout << "3 got removed" << std::endl;
    }
    std::cout << tree2->get_debug_string() << std::endl;
+   std::cout << "Tree has " << tree2->countLeaves() << " leaves" << std::endl;
 
    return 0;
 }
