@@ -347,3 +347,23 @@ void BSTree::remove(int value, Node *trailer)
       throw NODE_NOT_FOUND;
    }
 }
+
+/**
+ * @brief Counts the number of leaves on this Tree
+ * 
+ * @return int Number of leaves
+ */
+int BSTree::countLeaves()
+{
+   return countLeaves(root);
+}
+
+int BSTree::countLeaves(Node *root)
+{
+   if (root == nullptr)
+   {
+      return 0;
+   }
+
+   return 1 + countLeaves(root->getLeft()) + countLeaves(root->getRight());
+}

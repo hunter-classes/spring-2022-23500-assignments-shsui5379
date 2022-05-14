@@ -9,6 +9,7 @@ private:
    int rsearch(int value, Node *root);
    void rinsert(int value, Node *root);
    void remove(int value, Node *trailer);
+   int countLeaves(Node *root);
 
 public:
    BSTree();
@@ -20,4 +21,5 @@ public:
    int rsearch(int value);
    void rinsert(int value);
    void remove(int value);
+   int countLeaves();
 };
