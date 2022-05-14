@@ -372,3 +372,26 @@ int BSTree::countLeaves(Node *root)
 
    return countLeaves(root->getLeft()) + countLeaves(root->getRight());
 }
+
+/**
+ * @brief Gets the height of this BSTree
+ *
+ * @return int Height of tree
+ */
+int BSTree::getHeight()
+{
+   return getHeight(root);
+}
+
+int BSTree::getHeight(Node *root)
+{
+   if (root == nullptr)
+   {
+      return 0;
+   }
+
+   int leftHeight = getHeight(root->getLeft());
+   int rightHeight = getHeight(root->getRight());
+
+   return 1 + ((leftHeight > rightHeight) ? leftHeight : rightHeight);
+}
