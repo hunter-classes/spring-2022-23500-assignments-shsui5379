@@ -99,3 +99,18 @@ TEST_CASE("countLeaves")
    tree->remove(3);
    CHECK(tree->countLeaves() == 3);
 }
+
+TEST_CASE("height")
+{
+   BSTree *tree = new BSTree();
+   CHECK(tree->getHeight() == 0);
+
+   tree->setup();
+   CHECK(tree->getHeight() == 3);
+
+   tree->rinsert(12);
+   CHECK(tree->getHeight() == 4);
+
+   tree->remove(3);
+   CHECK(tree->getHeight() == 4);
+}
