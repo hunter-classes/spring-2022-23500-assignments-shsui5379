@@ -114,3 +114,21 @@ TEST_CASE("height")
    tree->remove(3);
    CHECK(tree->getHeight() == 4);
 }
+
+TEST_CASE("cousins")
+{
+   BSTree *tree = new BSTree();
+
+   CHECK_THROWS(tree->areCousins(5, 20), NODE_NOT_FOUND);
+
+   tree->setup();
+
+   CHECK(tree->areCousins(10, 15) == false);
+   CHECK_THROWS(tree->areCousins(10, 0), NODE_NOT_FOUND);
+
+   CHECK(tree->areCousins(5, 20) == true);
+   CHECK(tree->areCousins(5, 10) == false);
+
+   CHECK(tree->areCousins(8, 30) == true);
+   CHECK(tree->areCousins(3, 20) == false);
+}
