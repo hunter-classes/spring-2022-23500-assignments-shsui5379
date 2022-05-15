@@ -395,3 +395,42 @@ int BSTree::getHeight(Node *root)
 
    return 1 + ((leftHeight > rightHeight) ? leftHeight : rightHeight);
 }
+
+/**
+ * @brief Determines if 2 values are cousins
+ *
+ * @param a The first value
+ * @param b The second value
+ * @return true If the 2 values are cousins
+ * @return false If the 2 values are not cousins
+ */
+bool BSTree::areCousins(int a, int b)
+{
+   int aLevel = levelFound(a, root, 1);
+   int bLevel = levelFound(b, root, 1);
+
+   if (aLevel == -1 || bLevel == -1)
+   {
+      throw NODE_NOT_FOUND;
+   }
+
+   return aLevel == bLevel;
+}
+
+int BSTree::levelFound(int value, Node *root, int currentLevel)
+{
+   if (root == nullptr)
+   {
+      return -1;
+   }
+
+   if (root->getData() == value)
+   {
+      return currentLevel;
+   }
+
+   int leftLevel = levelFound(value, root->getLeft(), currentLevel + 1);
+   int rightLevel = levelFound(value, root->getRight(), currentLevel + 1);
+
+   return (leftLevel != -1) ? leftLevel : rightLevel;
+}

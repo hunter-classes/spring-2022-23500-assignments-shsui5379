@@ -11,6 +11,7 @@ private:
    void remove(int value, Node *trailer);
    int countLeaves(Node *root);
    int getHeight(Node *root);
+   int levelFound(int value, Node *root, int currentLevel);
 
 public:
    BSTree();
@@ -24,4 +25,5 @@ public:
    void remove(int value);
    int countLeaves();
    int getHeight();
+   bool areCousins(int a, int b);
 };
