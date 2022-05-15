@@ -127,5 +127,28 @@ int main()
    std::cout << "Tree has " << tree2->countLeaves() << " leaves" << std::endl;
    std::cout << "Tree's height is " << tree2->getHeight() << " nodes" << std::endl;
 
+   std::cout << "----------" << std::endl;
+
+   BSTree *tree3 = new BSTree();
+   tree3->setup();
+
+   std::cout << "are 10 and 15 cousins: " << tree3->areCousins(10, 15) << std::endl;
+
+   std::cout << "are 10 and 0 cousins: ";
+   try
+   {
+      tree3->areCousins(10, 0);
+   }
+   catch (int e)
+   {
+      std::cout << "0 is not on the tree" << std::endl;
+   }
+
+   std::cout << "are 5 and 20 cousins: " << tree3->areCousins(5, 20) << std::endl;
+   std::cout << "are 5 and 10 cousins: " << tree3->areCousins(5, 10) << std::endl;
+
+   std::cout << "are 8 and 30 cousins: " << tree3->areCousins(8, 30) << std::endl;
+   std::cout << "are 3 and 20 cousins: " << tree3->areCousins(3, 20) << std::endl;
+
    return 0;
 }
