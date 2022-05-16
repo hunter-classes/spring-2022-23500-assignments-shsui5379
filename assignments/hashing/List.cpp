@@ -8,38 +8,12 @@ List::List()
    length = 0;
 }
 
-void List::insert(std::string data)
+void List::insert(Person *person)
 {
-   Node *new_node = new Node(data);
+   Node *new_node = new Node(person);
 
    new_node->setNext(head);
    head = new_node;
-
-   length++;
-}
-
-void List::insert(int index, std::string data)
-{
-   if (index == 0)
-   {
-      return insert(data);
-   }
-
-   if (index < 0 || index > length)
-   {
-      throw std::out_of_range("Out of range");
-   }
-
-   Node *new_node = new Node(data);
-   Node *walker = head;
-
-   for (int i = 0; i < index - 1; i++)
-   {
-      walker = walker->getNext();
-   }
-
-   new_node->setNext(walker->getNext());
-   walker->setNext(new_node);
 
    length++;
 }
@@ -54,38 +28,12 @@ std::string List::toString()
 
    while (walker != nullptr)
    {
-      s += walker->getData() + " --> ";
+      s += walker->getData()->get_name() + " --> ";
       walker = walker->getNext();
    }
 
    s += "nullptr";
    return s;
-}
-
-/**
- * Finds the index of a piece of data on this list
- *
- * @param data  The data to search for
- * @returns  The index of data
- * */
-int List::locate(std::string data)
-{
-   if (head == nullptr)
-      return -1;
-
-   int index = 0;
-   Node *walker = head;
-
-   while (walker != nullptr)
-   {
-      if (walker->getData() == data)
-         return index;
-
-      index++;
-      walker = walker->getNext();
-   }
-
-   return -1;
 }
 
 void List::remove(int loc)
@@ -127,21 +75,26 @@ int List::getLength()
    return length;
 }
 
-std::string List::get(int index)
+Person *List::get(std::string firstName, std::string lastName)
 {
-   if (index < 0 || index > length - 1)
-   {
-      throw std::out_of_range("Out of range");
-   }
-
    Node *walker = head;
 
-   for (int i = 0; i < index; i++)
+   if (walker->getData()->get_name() == firstName + " " + lastName)
    {
-      walker = walker->getNext();
+      return walker->getData();
    }
 
-   return walker->getData();
+   while (walker->getNext() != nullptr)
+   {
+      walker = walker->getNext();
+
+      if (walker->getData()->get_name() == firstName + " " + lastName)
+      {
+         return walker->getData();
+      }
+   }
+
+   throw NODE_NOT_FOUND;
 }
 
 List::~List()

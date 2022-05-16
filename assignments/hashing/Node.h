@@ -10,12 +10,11 @@ private:
 
 public:
    Node();
-   Node(std::string data);
-   Node(std::string data, Node *next);
+   Node(Person *person);
+   Node(Person *person, Node *next);
 
-   void setData(std::string data);
    void setNext(Node *next);
 
-   std::string getData();
+   Person *getData();
    Node *getNext();
 };

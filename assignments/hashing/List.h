@@ -2,6 +2,9 @@
 
 #include <iostream>
 #include "Node.h"
+#include "Person.h"
+
+#define NODE_NOT_FOUND 1
 
 class List
 {
@@ -11,12 +14,10 @@ protected:
 
 public:
    List();
-   void insert(std::string data);
-   void insert(int index, std::string data);
+   void insert(Person *person);
    std::string toString();
-   int locate(std::string data);
    void remove(int loc);
    int getLength();
-   std::string get(int index);
+   Person *get(std::string firstName, std::string lastName);
    ~List();
 };
