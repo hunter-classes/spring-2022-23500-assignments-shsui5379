@@ -5,13 +5,13 @@ Node::Node() : next(nullptr) {}
 
 Node::Node(Person *person)
 {
-   this->data = data;
+   this->data = person;
    this->next = nullptr;
 }
 
 Node::Node(Person *person, Node *next)
 {
-   this->data = data;
+   this->data = person;
    this->next = next;
 }
 
