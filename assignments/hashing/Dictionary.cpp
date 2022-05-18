@@ -67,3 +67,22 @@ void Dictionary::insert(std::string firstName, std::string lastName)
 {
    arr[hash(firstName + " " + lastName)]->insert(new Person(firstName, lastName, ++lastAssignedId));
 }
+
+/**
+ * @brief Gets the Person object with a given name
+ *
+ * @param firstName The Person's first name
+ * @param lastName The Person's last name
+ * @return Person* Pointer to the corresponding Person object.  nullptr if Person not found
+ */
+Person *Dictionary::get(std::string firstName, std::string lastName)
+{
+   try
+   {
+      return arr[hash(firstName + " " + lastName)]->get(firstName, lastName);
+   }
+   catch (int e)
+   {
+      return nullptr;
+   }
+}
