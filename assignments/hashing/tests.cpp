@@ -48,3 +48,19 @@ TEST_CASE("insert and get")
 
    CHECK(d->get("Lena", "MacKenna") == nullptr);
 }
+
+TEST_CASE("insert and getAll")
+{
+   Dictionary *d = new Dictionary(3);
+
+   CHECK(d->getAll() == "nullptr\nnullptr\nnullptr\n");
+
+   d->insert("Shalom", "Tomczak");
+   d->insert("Kibwe", "Sampson");
+   d->insert("Aitor", "Espensen");
+   d->insert("Karma", "Yamagishi");
+   d->insert("Lena", "Jans");
+   d->insert("Aroa", "MacKenna");
+
+   CHECK(d->getAll() == "MacKenna,Aroa --> nullptr\nSampson,Kibwe --> nullptr\nJans,Lena --> Yamagishi,Karma --> Espensen,Aitor --> Tomczak,Shalom --> nullptr\n");
+}
