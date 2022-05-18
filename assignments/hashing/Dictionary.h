@@ -18,4 +18,5 @@ public:
    int hash(std::string name);
    void insert(std::string firstName, std::string lastName);
    Person *get(std::string firstName, std::string lastName);
+   std::string getAll();
 };

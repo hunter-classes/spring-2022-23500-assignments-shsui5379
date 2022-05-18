@@ -86,3 +86,20 @@ Person *Dictionary::get(std::string firstName, std::string lastName)
       return nullptr;
    }
 }
+
+/**
+ * @brief Get a string of all Persons in this Dictionary
+ *
+ * @return std::string string of all Persons
+ */
+std::string Dictionary::getAll()
+{
+   std::string output = "";
+
+   for (int i = 0; i < size; i++)
+   {
+      output += arr[i]->toString() + "\n";
+   }
+
+   return output;
+}
