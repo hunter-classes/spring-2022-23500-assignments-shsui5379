@@ -61,6 +61,7 @@ void List::remove(int loc)
       walker->setNext(target->getNext());
 
       delete target;
+      target = nullptr;
 
       length--;
    }
@@ -106,5 +107,6 @@ List::~List()
       Node *current = walker;
       walker = walker->getNext();
       delete current;
+      current = nullptr;
    }
 }
