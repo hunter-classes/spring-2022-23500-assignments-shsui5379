@@ -10,7 +10,7 @@ Person::Person(std::string first, std::string last, int num)
 
 std::string Person::get_name()
 {
-   return last + ", " + first;
+   return last + "," + first;
 }
 
 int Person::get_id()

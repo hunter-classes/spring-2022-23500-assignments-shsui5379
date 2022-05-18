@@ -87,7 +87,7 @@ Person *List::get(std::string firstName, std::string lastName)
 
    for (int i = 0; i < length; i++)
    {
-      if (walker->getData()->get_name() == firstName + " " + lastName)
+      if (walker->getData()->get_name() == lastName + "," + firstName)
       {
          return walker->getData();
       }

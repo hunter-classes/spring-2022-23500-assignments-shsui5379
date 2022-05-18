@@ -65,7 +65,7 @@ int Dictionary::hash(std::string name)
  */
 void Dictionary::insert(std::string firstName, std::string lastName)
 {
-   arr[hash(firstName + " " + lastName)]->insert(new Person(firstName, lastName, ++lastAssignedId));
+   arr[hash(lastName + "," + firstName)]->insert(new Person(firstName, lastName, ++lastAssignedId));
 }
 
 /**
@@ -79,7 +79,7 @@ Person *Dictionary::get(std::string firstName, std::string lastName)
 {
    try
    {
-      return arr[hash(firstName + " " + lastName)]->get(firstName, lastName);
+      return arr[hash(lastName + "," + firstName)]->get(firstName, lastName);
    }
    catch (int e)
    {
