@@ -79,6 +79,11 @@ Person *List::get(std::string firstName, std::string lastName)
 {
    Node *walker = head;
 
+   if (walker == nullptr)
+   {
+      throw NODE_NOT_FOUND;
+   }
+
    if (walker->getData()->get_name() == firstName + " " + lastName)
    {
       return walker->getData();
