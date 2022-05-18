@@ -16,3 +16,35 @@ TEST_CASE("hash")
    CHECK(d->hash("hash") == ('h' + 'a' + 's' + 'h') % 3);
    CHECK(d->hash("") == 0);
 }
+
+TEST_CASE("insert and get")
+{
+   Dictionary *d = new Dictionary(3);
+
+   d->insert("Shalom", "Tomczak");
+   d->insert("Kibwe", "Sampson");
+   d->insert("Aitor", "Espensen");
+   d->insert("Karma", "Yamagishi");
+   d->insert("Lena", "Jans");
+   d->insert("Aroa", "MacKenna");
+
+   Person *p = d->get("Shalom", "Tomczak");
+   CHECK(p->get_name() == "Tomczak,Shalom");
+
+   p = d->get("Kibwe", "Sampson");
+   CHECK(p->get_name() == "Sampson,Kibwe");
+
+   p = d->get("Aitor", "Espensen");
+   CHECK(p->get_name() == "Espensen,Aitor");
+
+   p = d->get("Karma", "Yamagishi");
+   CHECK(p->get_name() == "Yamagishi,Karma");
+
+   p = d->get("Lena", "Jans");
+   CHECK(p->get_name() == "Jans,Lena");
+
+   p = d->get("Aroa", "MacKenna");
+   CHECK(p->get_name() == "MacKenna,Aroa");
+
+   CHECK(d->get("Lena", "MacKenna") == nullptr);
+}
